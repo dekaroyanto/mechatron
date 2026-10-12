@@ -1,26 +1,285 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
+@layer base {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --color-dji-primary: #0070D5;
+    --color-dji-canvas: #EDEDED;
+    --color-dji-surface-alt: #F7F9FA;
+    --color-dji-ink: #000000;
+    --color-dji-accent: #0000EE;
+    --color-dji-neutral-1: #3B3E40;
+    --color-dji-neutral-2: #9FA3A6;
+    --color-dji-neutral-3: #303233;
+    --color-dji-neutral-4: #272727;
+    --color-dji-neutral-5: #6C7073;
+    --shadow-dropdown: rgba(0, 0, 0, 0.1) 0px 16px 16px 0px;
+  }
+
+  body {
+    font-family: var(--font-open-sans), "Open Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background-color: var(--color-dji-canvas);
+    color: var(--color-dji-ink);
+    margin: 0;
+    padding: 0;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* Custom utility styles matching DJI design system */
+.dji-container {
+  width: 100%;
+  max-width: 1408px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 16px;
+  padding-right: 16px;
+}
+
+.display-lg {
+  font-family: var(--font-open-sans), sans-serif;
+  font-size: 40px;
+  font-weight: 500;
+  line-height: 1.1;
+  letter-spacing: 0px;
+}
+
+.display-lg-strong {
+  font-family: var(--font-open-sans), sans-serif;
+  font-size: 40px;
+  font-weight: 600;
+  line-height: 1.1;
+  letter-spacing: -0.96px;
+}
+
+.heading-md {
+  font-family: var(--font-open-sans), sans-serif;
+  font-size: 32px;
+  font-weight: 500;
+  line-height: 1.13;
+  letter-spacing: 0px;
+}
+
+.heading-md-strong {
+  font-family: var(--font-open-sans), sans-serif;
+  font-size: 32px;
+  font-weight: 600;
+  line-height: 1.13;
+  letter-spacing: -0.96px;
+}
+
+.heading-sm {
+  font-family: var(--font-open-sans), sans-serif;
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 1.2;
+  letter-spacing: 0px;
+}
+
+.body-lg {
+  font-family: var(--font-open-sans), sans-serif;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 1.56;
+  letter-spacing: 0px;
+}
+
+.body-md {
+  font-family: var(--font-open-sans), sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.5;
+  letter-spacing: 0px;
+}
+
+.body-sm {
+  font-family: var(--font-open-sans), sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.43;
+  letter-spacing: -0.28px;
+}
+
+.nav-link {
+  font-family: var(--font-open-sans), sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: -0.28px;
+  transition: color 0.15s ease;
+}
+
+/* Button styles exact to design system */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  height: 32px;
+  padding: 8px 16px;
+  border-radius: 9999px;
+  background-color: #0070D5;
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: -0.28px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-decoration: none;
+}
+
+.btn-primary:hover {
+  background-color: #0060b8;
+  opacity: 0.95;
+}
+
+.btn-primary:active {
+  background-color: #00509a;
+}
+
+.btn-filled-light {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  height: 40px;
+  padding: 10px 16px;
+  border-radius: 99px;
+  background-color: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(8px);
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.25;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-decoration: none;
+}
+
+.btn-filled-light:hover {
+  background-color: rgba(255, 255, 255, 0.25);
+}
+
+.btn-outline-white {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  height: 32px;
+  padding: 5px 16px;
+  border-radius: 64px;
+  border: 1px solid #ffffff;
+  background-color: transparent;
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 400;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-decoration: none;
+}
+
+.btn-outline-white:hover {
+  background-color: rgba(255, 255, 255, 0.15);
+}
+
+.btn-outline-dark {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  height: 32px;
+  padding: 5px 16px;
+  border-radius: 64px;
+  border: 1px solid rgba(0, 0, 0, 0.85);
+  background-color: transparent;
+  color: #000000;
+  font-size: 14px;
+  font-weight: 400;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-decoration: none;
+}
+
+.btn-outline-dark:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+/* Link hover styling */
+.dji-link {
+  color: #0070D5;
+  font-size: 14px;
+  font-weight: 400;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  transition: all 0.2s ease;
+}
+
+.dji-link:hover {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+/* Sharp cards according to design system (rounded.none: 0px) */
+.dji-card {
+  border-radius: 0px;
+  border: none;
+  box-shadow: none;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.dji-card:hover .dji-card-title {
+  text-decoration: underline #0070D5;
+  text-underline-offset: 4px;
+}
+
+/* Dropdown shadow according to design system */
+.dji-dropdown-shadow {
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 16px 16px 0px;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Responsive hero image cropping */
+.hero-bg-responsive {
+  object-fit: cover;
+  object-position: var(--mobile-pos, center center);
+}
+
+@media (min-width: 768px) {
+  .hero-bg-responsive {
+    object-position: var(--desktop-pos, center center);
+  }
+}
+
+/* Progress Bar Loader (awal abu-abu transparan, seiring 5 detik terisi putih solid) */
+@keyframes heroProgressBarFill {
+  0% {
+    width: 0%;
+  }
+  100% {
+    width: 100%;
+  }
+}
+
+.hero-progress-fill {
+  width: 0%;
+  animation: heroProgressBarFill 5s linear forwards;
 }
