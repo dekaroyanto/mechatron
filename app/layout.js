@@ -9,7 +9,7 @@ const openSans = Open_Sans({
 });
 
 export const metadata = {
-  title: "Mechatron - Website Resmi Indonesia | Drone, Sistem Kendali & Peralatan Cerdas",
+  title: "Mechatron",
   description:
     "Mechatron menghadirkan inovasi drone pertanian, sistem ground control, dan teknologi otonom pintar mutakhir di Indonesia.",
   icons: {
