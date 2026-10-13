@@ -1,180 +1,216 @@
 "use client";
 
-import React, { useState } from "react";
+import React from "react";
 import Image from "next/image";
+import { getDroneProduct, droneProducts } from "@/lib/droneProductsData";
 
 export default function ProductModal({ product, onClose }) {
-  const [selectedBundle, setSelectedBundle] = useState("flymore");
-  const [orderSuccess, setOrderSuccess] = useState(false);
-
   if (!product) return null;
 
-  const bundles = [
-    {
-      id: "standard",
-      title: "Paket Standar",
-      desc: "Unit drone/gimbal, 1x Intelligent Battery, remote controller, kabel & baling-baling cadangan.",
-      priceModifier: 0,
-    },
-    {
-      id: "flymore",
-      title: "Fly More / Creator Combo",
-      desc: "Termasuk 3x Baterai, Two-Way Charging Hub, Tas Bahu Eksklusif, Set Filter ND, dan baling-baling ekstra.",
-      priceModifier: 4200000,
-    },
-  ];
+  // Resolve official brochure data for Mechatron Agri H-15 / H-30
+  const droneData =
+    getDroneProduct(product.id || product.title || "") ||
+    (product.id && droneProducts[product.id]) ||
+    null;
 
-  const handleCheckout = () => {
-    setOrderSuccess(true);
-    setTimeout(() => {
-      setOrderSuccess(false);
-      onClose();
-    }, 2800);
-  };
+  const title = droneData ? droneData.name : product.title;
+  const subtitle = droneData ? droneData.subtitle : product.tagline || product.subtitle;
+  const modelCode = droneData ? droneData.modelCode : product.modelCode || null;
+  const image = droneData ? droneData.image : product.image;
+
+  const whatsappMessage = encodeURIComponent(
+    `Halo Mechatron, saya tertarik untuk konsultasi dan pemesanan unit ${title}${
+      modelCode ? ` (${modelCode})` : ""
+    }. Mohon informasi ketersediaan unit dan jadwal demo lapangan.`
+  );
+  const whatsappUrl = `https://wa.me/6281112143111?text=${whatsappMessage}`;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/75 backdrop-blur-sm animate-fade-in">
+    <div
+      className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-5 bg-black/80 backdrop-blur-md animate-fade-in overflow-y-auto"
+      onClick={onClose}
+    >
       <div
-        className="bg-[#F7F9FA] border border-[#D1D1D1] w-full max-w-3xl max-h-[92vh] overflow-y-auto relative dji-dropdown-shadow"
-        style={{ borderRadius: "0px" }}
+        className="bg-white border border-slate-200 w-full max-w-4xl max-h-[92vh] overflow-y-auto relative rounded-[24px] sm:rounded-[32px] shadow-2xl my-auto text-slate-900"
+        onClick={(e) => e.stopPropagation()}
       >
-        {/* Close Button */}
+        {/* Sticky Header Close Button */}
         <button
           onClick={onClose}
-          className="absolute top-4 right-4 z-20 w-8 h-8 rounded-full bg-[#EDEDED] text-[#000000] hover:bg-[#D1D1D1] flex items-center justify-center transition-colors"
+          className="absolute top-4 right-4 z-30 w-9 h-9 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-700 hover:text-black flex items-center justify-center transition-colors cursor-pointer shadow-sm"
           aria-label="Tutup Modal"
         >
           <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.2" d="M6 18L18 6M6 6l12 12" />
           </svg>
         </button>
 
-        {orderSuccess ? (
-          <div className="p-12 text-center space-y-4">
-            <div className="w-16 h-16 bg-[#0070D5] text-white rounded-full flex items-center justify-center mx-auto text-2xl">
-              ✓
+        <div className="p-6 sm:p-8 md:p-10">
+          {/* Top Hero Showcase */}
+          <div className="grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-8 items-center pb-8 border-b border-slate-200">
+            {/* Drone Thumbnail */}
+            <div className="md:col-span-5 relative w-full h-[240px] sm:h-[280px] md:h-[320px] rounded-[20px] overflow-hidden bg-slate-900 shadow-md">
+              <Image
+                src={image}
+                alt={title}
+                fill
+                priority
+                className="object-cover object-center"
+              />
+              {modelCode && (
+                <div className="absolute top-3 left-3 bg-white/95 backdrop-blur-md px-3 py-1 rounded-full text-[11px] font-bold text-slate-900 shadow-sm border border-slate-200">
+                  {modelCode}
+                </div>
+              )}
             </div>
-            <h3 className="heading-md-strong text-[#000000]">Pesanan Berhasil Disiapkan!</h3>
-            <p className="text-[15px] text-[#535353] max-w-md mx-auto">
-              Terima kasih telah memesan <strong>{product.title}</strong> via Mechatron Indonesia Store. Konfirmasi dan instruksi pemesanan telah dikirimkan ke email Anda.
-            </p>
+
+            {/* Product Title & Brand Info */}
+            <div className="md:col-span-7 flex flex-col justify-center">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#0070D5]/10 text-[#0070D5] text-[11px] font-bold uppercase tracking-wider mb-2 self-start">
+                <span>Mechatron Agriculture Drone</span>
+              </div>
+
+              <h2 className="text-[26px] sm:text-[32px] md:text-[36px] font-extrabold text-slate-900 tracking-tight leading-tight mb-2">
+                {title}
+              </h2>
+
+              <p className="text-[14px] sm:text-[15px] font-semibold text-[#0070D5] mb-3">
+                {subtitle}
+              </p>
+
+              <p className="text-[13px] sm:text-[14px] text-slate-600 leading-relaxed mb-6">
+                {droneData?.tagline ||
+                  "Solusi teknologi udara adaptif presisi tinggi untuk menjawab kebutuhan mekanisasi pertanian dan ketahanan pangan modern."}
+              </p>
+
+              {/* Purchase Direct to WhatsApp */}
+              <div className="p-4 rounded-[18px] bg-gradient-to-r from-emerald-50 to-blue-50 border border-emerald-200/60 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+                <div>
+                  <span className="text-[11px] font-bold uppercase tracking-wider text-emerald-700 block">
+                    Pemesanan & Konsultasi Resmi
+                  </span>
+                  <p className="text-[13px] text-slate-700 font-medium">
+                    Hubungi tim sales untuk penawaran resmi, paket sewa, atau demo unit.
+                  </p>
+                </div>
+
+                <a
+                  href={whatsappUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="shrink-0 w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-[#25D366] hover:bg-[#20bd5a] text-white font-bold text-[14px] px-6 py-2.5 rounded-full shadow-md transition-all hover:scale-105 active:scale-95"
+                >
+                  <span>Chat WhatsApp</span>
+                  <span>›</span>
+                </a>
+              </div>
+            </div>
           </div>
-        ) : (
-          <div className="p-6 sm:p-8">
-            {/* Header info */}
-            <div className="flex flex-col sm:flex-row gap-6 items-start border-b border-[#D1D1D1] pb-6 mb-6">
-              <div className="relative w-full sm:w-[260px] h-[220px] bg-[#EDEDED] shrink-0 overflow-hidden">
-                <Image
-                  src={product.image}
-                  alt={product.title}
-                  fill
-                  className="object-cover object-center"
-                />
-              </div>
 
-              <div className="flex-1">
-                <span className="text-[11px] font-semibold uppercase tracking-wider text-[#0070D5] bg-[#EDEDED] px-2.5 py-1">
-                  Resmi Erajaya / Urban Republic
-                </span>
-                <h3 className="heading-md-strong text-[#000000] mt-2 mb-1">
-                  {product.title}
+          {/* Official Brochure Specifications (If Available) */}
+          {droneData && droneData.specifications && (
+            <div className="mt-8">
+              <div className="flex items-center justify-between mb-4">
+                <h3 className="text-[18px] sm:text-[20px] font-extrabold text-slate-900 tracking-tight">
+                  Spesifikasi Teknis Drone ({droneData.modelCode})
                 </h3>
-                <p className="text-[14px] text-[#535353] mb-3">
-                  {product.subtitle || product.tagline}
-                </p>
-                <div className="text-[22px] font-bold text-[#0070D5]">
-                  {product.price}
-                </div>
-                <div className="text-[12px] text-[#6C7073] mt-1">
-                  Termasuk PPN 11% & Garansi Resmi DJI Indonesia 1 Tahun
-                </div>
+                <span className="text-[11px] font-semibold px-2.5 py-0.5 rounded-full bg-slate-100 text-slate-600">
+                  Resmi Mechatron
+                </span>
               </div>
-            </div>
 
-            {/* Choose Bundle Option */}
-            <div className="mb-6">
-              <h4 className="text-[14px] font-semibold text-[#000000] mb-3 uppercase tracking-wider">
-                Pilih Paket Pembelian:
-              </h4>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                {bundles.map((bundle) => (
+              {/* Specs Grid Table */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 sm:gap-3 bg-slate-50 p-4 sm:p-5 rounded-[20px] border border-slate-200">
+                {droneData.specifications.map((spec, sIdx) => (
                   <div
-                    key={bundle.id}
-                    onClick={() => setSelectedBundle(bundle.id)}
-                    className={`p-4 cursor-pointer border transition-all ${
-                      selectedBundle === bundle.id
-                        ? "border-[#0070D5] bg-[#EDEDED]"
-                        : "border-[#D1D1D1] bg-[#F7F9FA] hover:bg-[#EDEDED]"
-                    }`}
-                    style={{ borderRadius: "0px" }}
+                    key={sIdx}
+                    className="flex flex-col sm:flex-row sm:items-center justify-between p-2.5 rounded-xl bg-white border border-slate-100 text-[13px]"
                   >
-                    <div className="flex items-center justify-between mb-1">
-                      <span className="font-semibold text-[14px] text-[#000000]">{bundle.title}</span>
-                      <span className="w-3.5 h-3.5 rounded-full border flex items-center justify-center border-[#0070D5]">
-                        {selectedBundle === bundle.id && (
-                          <span className="w-2 h-2 rounded-full bg-[#0070D5]"></span>
-                        )}
-                      </span>
-                    </div>
-                    <p className="text-[12px] text-[#535353] leading-relaxed mb-2">
-                      {bundle.desc}
-                    </p>
-                    <div className="text-[12px] font-semibold text-[#0070D5]">
-                      {bundle.priceModifier === 0 ? "Harga Dasar" : `+ Rp ${bundle.priceModifier.toLocaleString("id-ID")}`}
-                    </div>
+                    <span className="text-slate-500 font-medium">{spec.label}</span>
+                    <span className="text-slate-900 font-bold sm:text-right mt-0.5 sm:mt-0">
+                      {spec.value}
+                    </span>
                   </div>
                 ))}
               </div>
             </div>
+          )}
 
-            {/* Technical Highlights */}
-            {product.specs && (
-              <div className="mb-6 bg-[#EDEDED] p-4 border border-[#D1D1D1]">
-                <h4 className="text-[13px] font-semibold text-[#000000] mb-2 uppercase tracking-wider">
-                  Fitur Unggulan Utama:
-                </h4>
-                <div className="grid grid-cols-2 gap-2">
-                  {product.specs.map((sp, idx) => (
-                    <div key={idx} className="text-[13px] text-[#3B3E40] flex items-center gap-2">
-                      <span className="text-[#0070D5] font-bold">✓</span>
-                      <span>{sp}</span>
+          {/* In-Field Application (Gambaran Penggunaan di Lapangan) */}
+          {droneData && droneData.fieldApplications && (
+            <div className="mt-8">
+              <h3 className="text-[18px] sm:text-[20px] font-extrabold text-slate-900 tracking-tight mb-3">
+                Aplikasi Lapangan (In-Field Application)
+              </h3>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                {droneData.fieldApplications.map((app, aIdx) => (
+                  <div
+                    key={aIdx}
+                    className="p-3.5 rounded-2xl bg-slate-50 border border-slate-200/80 hover:border-[#0070D5]/40 transition-colors"
+                  >
+                    <div className="text-[13px] font-bold text-slate-900 mb-1 flex items-center gap-1.5">
+                      <span className="w-2 h-2 rounded-full bg-[#0070D5] shrink-0" />
+                      <span>{app.title}</span>
                     </div>
-                  ))}
-                </div>
-              </div>
-            )}
-
-            {/* Supported Payment Channels */}
-            <div className="mb-8 pt-4 border-t border-[#D1D1D1]">
-              <div className="text-[12px] text-[#6C7073] mb-2 font-medium">
-                Metode Pembayaran Resmi di Indonesia:
-              </div>
-              <div className="flex flex-wrap items-center gap-2 text-[12px] text-[#3B3E40]">
-                <span className="bg-[#EDEDED] px-2.5 py-1 border border-[#D1D1D1]">BCA Virtual Account</span>
-                <span className="bg-[#EDEDED] px-2.5 py-1 border border-[#D1D1D1]">Mandiri Livin</span>
-                <span className="bg-[#EDEDED] px-2.5 py-1 border border-[#D1D1D1]">Kartu Kredit Cicilan 0%</span>
-                <span className="bg-[#EDEDED] px-2.5 py-1 border border-[#D1D1D1]">GoPay & OVO</span>
-                <span className="bg-[#EDEDED] px-2.5 py-1 border border-[#D1D1D1]">QRIS Nasional</span>
+                    <p className="text-[12px] text-slate-600 leading-relaxed">
+                      {app.desc}
+                    </p>
+                  </div>
+                ))}
               </div>
             </div>
+          )}
 
-            {/* Modal Actions */}
-            <div className="flex flex-col sm:flex-row items-center justify-end gap-3 pt-4 border-t border-[#D1D1D1]">
+          {/* Package Includes Box */}
+          {droneData && droneData.packageIncludes && (
+            <div className="mt-8 p-5 sm:p-6 rounded-[20px] bg-slate-900 text-white">
+              <div className="flex items-center gap-2 mb-3">
+                <span className="text-[#0070D5] text-lg font-bold">📦</span>
+                <h4 className="text-[15px] sm:text-[16px] font-bold text-white uppercase tracking-wider">
+                  Kelengkapan Paket (Package Include)
+                </h4>
+              </div>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 text-[13px]">
+                {droneData.packageIncludes.map((item, pIdx) => (
+                  <div key={pIdx} className="flex items-center gap-2.5 text-slate-200">
+                    <span className="w-4 h-4 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center text-[11px] font-bold shrink-0">
+                      ✓
+                    </span>
+                    <span>{item}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {/* Bottom Action Footer */}
+          <div className="mt-8 pt-6 border-t border-slate-200 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div className="text-[12px] text-slate-500 text-center sm:text-left">
+              PT Mechatron Berkah Mandiri Teknologi • Call Center:{" "}
+              <a href="tel:+6281112143111" className="font-semibold text-slate-700 hover:text-[#0070D5]">
+                +62 811 1214 3111
+              </a>
+            </div>
+
+            <div className="flex items-center gap-3 w-full sm:w-auto">
               <button
                 onClick={onClose}
-                className="btn-outline-dark w-full sm:w-auto text-[14px]"
+                className="w-1/2 sm:w-auto px-6 py-2.5 rounded-full border border-slate-300 text-slate-700 hover:bg-slate-100 text-[13px] font-semibold transition-colors"
               >
-                Kembali
+                Tutup
               </button>
-              <button
-                onClick={handleCheckout}
-                className="btn-primary w-full sm:w-auto !h-[40px] px-8 text-[14px] font-medium"
+              <a
+                href={whatsappUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-1/2 sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-2.5 rounded-full bg-[#0070D5] hover:bg-[#005bb5] text-white text-[13px] font-semibold shadow-md transition-all hover:scale-105 active:scale-95"
               >
-                Lanjutkan ke Pembayaran &rarr;
-              </button>
+                <span>Pesan via WhatsApp</span>
+                <span>›</span>
+              </a>
             </div>
           </div>
-        )}
+        </div>
       </div>
     </div>
   );

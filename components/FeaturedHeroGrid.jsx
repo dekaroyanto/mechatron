@@ -37,52 +37,42 @@ export default function FeaturedHeroGrid({ onSelectProduct }) {
   const topCards = [
     {
       id: "agri-h30",
-      category: "Smart Agricultural Heavy Payload Drone",
+      category: "30-Litre Hexacopter Agriculture Drone (BMT-1525)",
       titlePrefix: "MECHATRON ",
       titleSuffix: "AGRI H-30",
-      tagline: "Heavy Payload 30L, Maximum Yield.",
+      tagline: "Smart Solutions for Every Mission — Heavy Payload 30L.",
       links: [
-        { label: "Pelajari Lebih Lanjut", isBuy: false },
-        { label: "Hubungi Kami", isBuy: true },
+        { label: "Lihat Spesifikasi", isBuy: false },
+        { label: "Pesan via WhatsApp", isBuy: true },
       ],
       image: "/images/featured_drone_h30.jpg",
       productInfo: {
-        title: "Mechatron AGRI H-30 Agricultural Drone",
+        id: "agri-h30",
+        modelCode: "BMT-1525",
+        title: "MECHATRON AGRI H-30 (BMT-1525)",
         tagline:
           "Sistem Penyemprotan & Pemupukan Presisi Pertanian Kapasitas 30 Liter",
-        price: "Hubungi Distributor Resmi Mechatron",
         image: "/images/featured_drone_h30.jpg",
-        specs: [
-          "Kapasitas Tangki Muatan 30 Liter",
-          "Sistem Atomisasi Nozzle Presisi Ganda",
-          "Navigasi RTK Akurasi Sentimeter Terpadu",
-          "Radar Penghindar Rintangan Lapangan 360°",
-        ],
       },
     },
     {
       id: "agri-h15",
-      category: "Foldable Compact Agricultural Drone",
+      category: "15-Litre Hexacopter Agriculture Drone (BMT-1323)",
       titlePrefix: "MECHATRON ",
       titleSuffix: "AGRI H-15",
-      tagline: "Compact, Foldable, High Efficiency 15L.",
+      tagline: "6-Rotor Stability & Precision Spraying — Compact Foldable 15L.",
       links: [
-        { label: "Pelajari Lebih Lanjut", isBuy: false },
-        { label: "Hubungi Kami", isBuy: true },
+        { label: "Lihat Spesifikasi", isBuy: false },
+        { label: "Pesan via WhatsApp", isBuy: true },
       ],
       image: "/images/featured_drone_h15.jpg",
       productInfo: {
-        title: "Mechatron AGRI H-15 Compact Drone",
+        id: "agri-h15",
+        modelCode: "BMT-1323",
+        title: "MECHATRON AGRI H-15 (BMT-1323)",
         tagline:
           "Drone Lipat Efisiensi Tinggi dengan Kapasitas Muatan 15 Liter",
-        price: "Hubungi Distributor Resmi Mechatron",
         image: "/images/featured_drone_h15.jpg",
-        specs: [
-          "Kapasitas Tangki Muatan 15 Liter",
-          "Desain Lengan Lipat Cepat & Mudah Dibawa",
-          "Peti Logam Khusus Pengiriman & Penyimpanan Aman",
-          "Sensor Kontur Medan Real-Time Otomatis",
-        ],
       },
     },
   ];
@@ -103,14 +93,7 @@ export default function FeaturedHeroGrid({ onSelectProduct }) {
         title: "Mechatron Smart Ground Control Station",
         tagline:
           "Remote Kontrol Presisi Tinggi dengan Modul Dual-Antena & Tas Khusus",
-        price: "Hubungi Distributor Resmi Mechatron",
         image: "/images/featured_remote_kit.jpg",
-        specs: [
-          "Layar Sentuh HD Ultra-Bright Tahan Terik Matahari",
-          "Sistem Transmisi Video HD Jarak Jauh hingga 15km",
-          "Dua Modul Antena Pelacak Lapangan Stabil",
-          "Kompartemen Pelindung Eva Case Khusus",
-        ],
       },
     },
     {
@@ -128,14 +111,7 @@ export default function FeaturedHeroGrid({ onSelectProduct }) {
         title: "Mechatron Enterprise Power & Flight Combo Kit",
         tagline:
           "Paket Lengkap Hardcase, Baterai Cerdas, Smart Charger & Remote Kontrol",
-        price: "Hubungi Distributor Resmi Mechatron",
         image: "/images/featured_combo_kit.jpg",
-        specs: [
-          "2x Baterai Cerdas Mechatron Daya Tahan Tinggi",
-          "Smart Fast Charger Generator Kompatibel",
-          "Remote Kontrol Layar Terang Terintegrasi",
-          "Aluminium Heavy-Duty Flight Transport Case",
-        ],
       },
     },
   ];
@@ -202,7 +178,7 @@ export default function FeaturedHeroGrid({ onSelectProduct }) {
 
           {/* Buttons: Pelajari Lebih Lanjut & Hubungi Kami (WhatsApp) */}
           <div className="flex items-center justify-center gap-3 sm:gap-4 flex-wrap">
-            {/* Tombol Pelajari Lebih Lanjut */}
+            {/* Tombol Lihat Spesifikasi */}
             <button
               onClick={(e) => {
                 e.stopPropagation();
@@ -210,7 +186,7 @@ export default function FeaturedHeroGrid({ onSelectProduct }) {
               }}
               className="inline-flex items-center gap-1.5 text-[13px] sm:text-[14px] font-semibold px-5 py-2.5 rounded-full shadow-sm hover:shadow-md transition-all duration-300 cursor-pointer bg-white text-[#111111] border border-gray-300 hover:border-[#0070D5] hover:text-[#0070D5]"
             >
-              <span>Pelajari Lebih Lanjut</span>
+              <span>Lihat Spesifikasi</span>
               <svg
                 className="w-3.5 h-3.5 transition-transform duration-200 group-hover/btn:translate-x-0.5"
                 fill="none"
@@ -226,10 +202,10 @@ export default function FeaturedHeroGrid({ onSelectProduct }) {
               </svg>
             </button>
 
-            {/* Tombol Hubungi Kami -> WhatsApp (+62 811 1214 3111) */}
+            {/* Tombol Pesan via WhatsApp (+62 811 1214 3111) */}
             <a
               href={`https://wa.me/6281112143111?text=${encodeURIComponent(
-                `Halo Mechatron, saya tertarik untuk konsultasi mengenai ${card.productInfo.title}.`
+                `Halo Mechatron, saya tertarik untuk konsultasi dan pemesanan ${card.productInfo.title}. Mohon informasi ketersediaan unit dan jadwal demo lapangan.`
               )}`}
               target="_blank"
               rel="noopener noreferrer"
@@ -238,7 +214,7 @@ export default function FeaturedHeroGrid({ onSelectProduct }) {
               }}
               className="inline-flex items-center gap-1.5 text-[13px] sm:text-[14px] font-semibold px-5 py-2.5 rounded-full shadow-sm hover:shadow-md transition-all duration-300 cursor-pointer bg-[#0070D5] text-white hover:bg-[#005bb5]"
             >
-              <span>Hubungi Kami</span>
+              <span>Pesan via WhatsApp</span>
               <svg
                 className="w-3.5 h-3.5 transition-transform duration-200 group-hover/btn:translate-x-0.5"
                 fill="none"

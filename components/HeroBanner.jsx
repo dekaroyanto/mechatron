@@ -38,9 +38,10 @@ export default function HeroBanner({ onSelectProduct }) {
       // 🔼 Atur posisi tulisan di HP:
       mobileTextTop: "10px",
       productInfo: {
-        title: "MECHATRON AGRI H-30",
-        tagline: "Smart Agricultural Heavy Payload Drone Kapasitas 30 Liter",
-        price: "Hubungi Distributor Resmi Mechatron / Call for Quotation",
+        id: "agri-h30",
+        modelCode: "BMT-1525",
+        title: "MECHATRON AGRI H-30 (BMT-1525)",
+        tagline: "30-Litre Hexacopter Agriculture Drone",
         image: "/images/heromecha1.jpg",
       },
     },
@@ -59,10 +60,10 @@ export default function HeroBanner({ onSelectProduct }) {
       mobileOffsetY: "0px",
       mobileTextTop: "50px",
       productInfo: {
-        title: "MECHATRON AGRI H-15",
-        tagline:
-          "High-Efficiency Compact Agricultural Drone Kapasitas 15 Liter",
-        price: "Hubungi Distributor Resmi Mechatron / Call for Quotation",
+        id: "agri-h15",
+        modelCode: "BMT-1323",
+        title: "MECHATRON AGRI H-15 (BMT-1323)",
+        tagline: "15-Litre Hexacopter Agriculture Drone",
         image: "/images/heromecha2.jpg",
       },
     },
@@ -81,10 +82,10 @@ export default function HeroBanner({ onSelectProduct }) {
       mobileOffsetY: "0px",
       mobileTextTop: "10px",
       productInfo: {
-        title: "Mechatron AGRI Agricultural Series",
-        tagline:
-          "Solusi Drone Pertanian Presisi Menyeluruh Masa Depan Indonesia",
-        price: "Hubungi Distributor Resmi Mechatron / Call for Quotation",
+        id: "agri-h30",
+        modelCode: "BMT-1525",
+        title: "MECHATRON AGRI SERIES (H-30 & H-15)",
+        tagline: "Solusi Drone Pertanian Presisi Menyeluruh Masa Depan Indonesia",
         image: "/images/heromecha3.jpg",
       },
     },
@@ -230,37 +231,26 @@ export default function HeroBanner({ onSelectProduct }) {
 
               {/* Action Buttons */}
               <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-4">
+                <a
+                  href={`https://wa.me/6281112143111?text=${encodeURIComponent(
+                    `Halo Mechatron, saya tertarik untuk konsultasi dan pemesanan unit ${slide.title}. Mohon informasi ketersediaan unit dan jadwal demo lapangan.`
+                  )}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 px-7 sm:px-9 py-2.5 sm:py-3.5 rounded-full bg-[#0070D5] hover:bg-[#005bb5] text-white text-[13px] sm:text-[15px] font-semibold transition-all duration-300 shadow-xl hover:scale-105 active:scale-95 cursor-pointer"
+                >
+                  <span>Pesan via WhatsApp</span>
+                  <span>›</span>
+                </a>
+
                 <button
                   onClick={() =>
                     onSelectProduct && onSelectProduct(slide.productInfo)
                   }
-                  className="inline-flex items-center gap-2 px-6 sm:px-8 py-2.5 sm:py-3 rounded-full bg-white text-[#0F172A] hover:bg-slate-100 text-[13px] sm:text-[14px] font-bold transition-all duration-300 shadow-xl hover:scale-105 active:scale-95 cursor-pointer"
+                  className="inline-flex items-center gap-2 px-7 sm:px-9 py-2.5 sm:py-3.5 rounded-full bg-white/10 hover:bg-white/20 text-white border border-white/40 hover:border-white backdrop-blur-md text-[13px] sm:text-[15px] font-semibold transition-all duration-300 shadow-lg hover:scale-105 active:scale-95 cursor-pointer"
                 >
-                  <span>Spesifikasi Unit</span>
-                  <svg
-                    className="w-3.5 h-3.5 text-[#0070D5]"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth="2.5"
-                      d="M9 5l7 7-7 7"
-                    />
-                  </svg>
+                  <span>Lihat Spesifikasi</span>
                 </button>
-
-                <a
-                  href="https://wa.me/6281112143111?text=Halo%20Mechatron%2C%20saya%20tertarik%20konsultasi%20drone%20pertanian%20Mechatron."
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 px-6 sm:px-8 py-2.5 sm:py-3 rounded-full bg-black/40 hover:bg-white/20 text-white border border-white/40 hover:border-white backdrop-blur-md text-[13px] sm:text-[14px] font-semibold transition-all duration-300 shadow-lg hover:scale-105 active:scale-95"
-                >
-                  <span>Konsultasi Produk</span>
-                  <span>›</span>
-                </a>
               </div>
             </div>
           );

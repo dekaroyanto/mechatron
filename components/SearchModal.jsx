@@ -10,21 +10,26 @@ export default function SearchModal({ isOpen, onClose, onSelectProduct }) {
 
   const allItems = [
     {
+      id: "agri-h30",
       title: "MECHATRON AGRI H-30",
+      modelCode: "BMT-1525",
       category: "Drone Pertanian Kapasitas 30L",
-      price: "Hubungi Sales Mechatron",
+      price: "Hubungi Sales WhatsApp",
       image: "/images/featured_drone_h30.jpg",
     },
     {
+      id: "agri-h15",
       title: "MECHATRON AGRI H-15",
+      modelCode: "BMT-1323",
       category: "Drone Pertanian Lipat Kapasitas 15L",
-      price: "Hubungi Sales Mechatron",
+      price: "Hubungi Sales WhatsApp",
       image: "/images/featured_drone_h15.jpg",
     },
     {
+      id: "mechatron-ground-station",
       title: "Mechatron Smart Ground Control Station (GCS)",
       category: "Sistem Kendali & RTK",
-      price: "Hubungi Sales Mechatron",
+      price: "Hubungi Sales WhatsApp",
       image: "/images/featured_remote_kit.jpg",
     },
     {
@@ -65,7 +70,7 @@ export default function SearchModal({ isOpen, onClose, onSelectProduct }) {
     {
       title: "Layanan Perawatan Drone",
       category: "Servis & Kalibrasi Resmi",
-      price: "Mulai dari Rp 500.000",
+      price: "Konsultasi Servis",
       image: "https://images.unsplash.com/photo-1775978150810-7f7410a550a3?auto=format&fit=crop&w=400&q=80",
       link: "/services/perawatandrone",
     },
@@ -122,7 +127,7 @@ export default function SearchModal({ isOpen, onClose, onSelectProduct }) {
 
           {filtered.length === 0 ? (
             <div className="py-8 text-center text-[#535353] text-[14px]">
-              Tidak ada produk yang cocok dengan &quot;{query}&quot;. Coba cari seri Mavic, Mini, atau Osmo.
+              Tidak ada produk yang cocok dengan &quot;{query}&quot;. Coba cari seri AGRI H-30, AGRI H-15, atau Layanan.
             </div>
           ) : (
             <div className="space-y-2">
