@@ -68,15 +68,6 @@ export default function LatestArticlesSection() {
                   className="object-cover object-center transition-transform duration-700 ease-out group-hover:scale-105"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-60 group-hover:opacity-40 transition-opacity" />
-
-                {/* Category Badge Floating on Image */}
-                <div className="absolute top-4 left-4 z-10">
-                  <span
-                    className={`inline-block text-[11px] font-bold px-3 py-1 rounded-full backdrop-blur-md bg-white/90 text-slate-900 shadow-sm border border-white/40`}
-                  >
-                    {article.category}
-                  </span>
-                </div>
               </Link>
 
               {/* Card Body Content */}

@@ -42,12 +42,6 @@ export default function HeroBanner({ onSelectProduct }) {
         tagline: "Smart Agricultural Heavy Payload Drone Kapasitas 30 Liter",
         price: "Hubungi Distributor Resmi Mechatron / Call for Quotation",
         image: "/images/heromecha1.jpg",
-        specs: [
-          "Kapasitas Muatan Tangki 30 Liter",
-          "Sistem Atomisasi Nozzle Presisi Ganda",
-          "Radar Phased Array Aktif & Penghindar Rintangan 360°",
-          "Navigasi RTK Sentimeter & Pemetaan Otomatis",
-        ],
       },
     },
     {
@@ -70,12 +64,6 @@ export default function HeroBanner({ onSelectProduct }) {
           "High-Efficiency Compact Agricultural Drone Kapasitas 15 Liter",
         price: "Hubungi Distributor Resmi Mechatron / Call for Quotation",
         image: "/images/heromecha2.jpg",
-        specs: [
-          "Kapasitas Muatan Tangki 15 Liter",
-          "Desain Lengan Lipat Cepat & Mudah Ditransportasikan",
-          "Sensor Kontur Medan Real-Time Otomatis",
-          "Efisiensi Semprot Tinggi untuk Berbagai Komoditas",
-        ],
       },
     },
     {
@@ -98,12 +86,6 @@ export default function HeroBanner({ onSelectProduct }) {
           "Solusi Drone Pertanian Presisi Menyeluruh Masa Depan Indonesia",
         price: "Hubungi Distributor Resmi Mechatron / Call for Quotation",
         image: "/images/heromecha3.jpg",
-        specs: [
-          "Penyemprotan & Penyebaran Butiran Presisi Tinggi",
-          "Dukungan Sistem Ground Control Station (GCS) Cerdas",
-          "Garansi Unit Resmi & Layanan Purna Jual Terpercaya",
-          "Ketersediaan Suku Cadang Orisinil Terjamin",
-        ],
       },
     },
   ];
@@ -174,7 +156,7 @@ export default function HeroBanner({ onSelectProduct }) {
 
   return (
     <section
-      className="relative w-full h-[100vh] min-h-[640px] sm:min-h-[680px] max-h-[1080px] bg-[#0A0E14] text-white overflow-hidden flex flex-col justify-between select-none cursor-grab active:cursor-grabbing"
+      className="relative w-full h-[100vh] min-h-[640px] sm:min-h-[680px] max-h-[1080px] bg-[#0A0E14] text-white overflow-hidden select-none cursor-grab active:cursor-grabbing"
       onTouchStart={onPointerDown}
       onTouchMove={onPointerMove}
       onTouchEnd={onPointerUp}
@@ -225,10 +207,8 @@ export default function HeroBanner({ onSelectProduct }) {
       })}
 
       {/* Top spacing placeholder for navbar */}
-      <div className="h-[70px] sm:h-[90px] w-full relative z-10 pointer-events-none" />
-
-      {/* Hero Content with Smooth Staggered Animation & Configurable Vertical Position */}
-      <div className="relative z-20 flex-1 flex flex-col items-center justify-start px-4 text-center">
+      {/* Hero Content - Perfectly Centered in Dead Middle (Desktop & Mobile) */}
+      <div className="absolute inset-0 z-20 flex flex-col items-center justify-center px-4 sm:px-6 md:px-8 text-center pointer-events-none">
         {slides.map((slide, idx) => {
           const isActive = idx === currentIndex;
           if (!isActive) return null;
@@ -236,49 +216,51 @@ export default function HeroBanner({ onSelectProduct }) {
           return (
             <div
               key={slide.id}
-              className="w-full flex flex-col items-center animate-fadeIn transition-all duration-700 ease-out"
-              style={{
-                paddingTop: slide.mobileTextTop || "12px",
-              }}
+              className="w-full max-w-2xl mx-auto flex flex-col items-center justify-center text-center animate-fadeIn transition-all duration-700 ease-out pointer-events-auto"
             >
-              <div className="max-w-xl mx-auto flex flex-col items-center">
-                {/* Big Bold Product Title */}
-                {/* <h1 className="text-[32px] xs:text-[36px] sm:text-[48px] md:text-[58px] lg:text-[64px] font-bold text-white tracking-[-0.5px] leading-[1.1] mb-2 sm:mb-2.5 drop-shadow-lg">
-                  {slide.title}
-                </h1> */}
+              {/* Big Bold Product Title */}
+              <h1 className="text-[32px] xs:text-[38px] sm:text-[48px] md:text-[58px] lg:text-[64px] font-extrabold text-white tracking-[-0.02em] leading-[1.08] mb-2 sm:mb-2.5 drop-shadow-2xl text-center">
+                {slide.title}
+              </h1>
 
-                {/* Tagline */}
-                {/* <p className="text-[15px] sm:text-[18px] md:text-[20px] font-semibold text-[#EDEDED] tracking-normal mb-5 sm:mb-8 drop-shadow-md max-w-lg leading-snug">
-                  {slide.tagline}
-                </p> */}
+              {/* Tagline */}
+              <p className="text-[14px] sm:text-[17px] md:text-[19px] font-medium text-[#EDEDED] tracking-normal mb-5 sm:mb-6 drop-shadow-md max-w-xl leading-relaxed text-center">
+                {slide.tagline}
+              </p>
 
-                {/* Action Buttons */}
-                <div className="flex flex-wrap items-center justify-center gap-2.5 sm:gap-4">
-                  {/* {slide.buttons.map((btn, btnIdx) => (
-                    <button
-                      key={btnIdx}
-                      onClick={() =>
-                        onSelectProduct && onSelectProduct(slide.productInfo)
-                      }
-                      className="inline-flex items-center gap-2 px-5 sm:px-7 py-2 sm:py-2.5 rounded-full border border-white/70 hover:border-white text-white text-[13px] sm:text-[14px] font-normal bg-black/25 hover:bg-white/15 backdrop-blur-[4px] transition-all duration-200 cursor-pointer shadow-md hover:scale-105 active:scale-95"
-                    >
-                      <span>{btn.label}</span>
-                      <svg
-                        className="w-3.5 h-3.5 text-white/90"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth="2.2"
-                          d="M9 5l7 7-7 7"
-                        />
-                      </svg>
-                    </button>
-                  ))} */}
-                </div>
+              {/* Action Buttons */}
+              <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-4">
+                <button
+                  onClick={() =>
+                    onSelectProduct && onSelectProduct(slide.productInfo)
+                  }
+                  className="inline-flex items-center gap-2 px-6 sm:px-8 py-2.5 sm:py-3 rounded-full bg-white text-[#0F172A] hover:bg-slate-100 text-[13px] sm:text-[14px] font-bold transition-all duration-300 shadow-xl hover:scale-105 active:scale-95 cursor-pointer"
+                >
+                  <span>Spesifikasi Unit</span>
+                  <svg
+                    className="w-3.5 h-3.5 text-[#0070D5]"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2.5"
+                      d="M9 5l7 7-7 7"
+                    />
+                  </svg>
+                </button>
+
+                <a
+                  href="https://wa.me/6281112143111?text=Halo%20Mechatron%2C%20saya%20tertarik%20konsultasi%20drone%20pertanian%20Mechatron."
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 px-6 sm:px-8 py-2.5 sm:py-3 rounded-full bg-black/40 hover:bg-white/20 text-white border border-white/40 hover:border-white backdrop-blur-md text-[13px] sm:text-[14px] font-semibold transition-all duration-300 shadow-lg hover:scale-105 active:scale-95"
+                >
+                  <span>Konsultasi Produk</span>
+                  <span>›</span>
+                </a>
               </div>
             </div>
           );
@@ -328,9 +310,9 @@ export default function HeroBanner({ onSelectProduct }) {
       </button>
 
       {/* Bottom Area */}
-      <div className="relative z-20 w-full pb-6 sm:pb-10 px-6 sm:px-12 md:px-16 flex items-end justify-between">
+      <div className="absolute bottom-0 left-0 right-0 z-20 w-full pb-6 sm:pb-10 px-6 sm:px-12 md:px-16 flex items-end justify-between pointer-events-none">
         {/* Desktop Left Switcher Ticker (hidden on mobile, shown on md and above) */}
-        <div className="hidden md:flex flex-col space-y-1.5 text-left">
+        <div className="hidden md:flex flex-col space-y-1.5 text-left pointer-events-auto">
           {slides.map((slide, idx) => {
             const isActive = idx === currentIndex;
             return (
@@ -353,7 +335,7 @@ export default function HeroBanner({ onSelectProduct }) {
         </div>
 
         {/* Mobile Slide Indicator Progress Bar (Loading bar: awal abu-abu tanpa putih, seiring 5 detik terisi putih) */}
-        <div className="md:hidden w-full flex items-center justify-center gap-2 pb-2">
+        <div className="md:hidden w-full flex items-center justify-center gap-2 pb-2 pointer-events-auto">
           {slides.map((slide, idx) => {
             const isActive = idx === currentIndex;
             return (

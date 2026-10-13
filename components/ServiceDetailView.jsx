@@ -74,9 +74,16 @@ export default function ServiceDetailView({ service }) {
             </h1>
 
             {/* Subtitle / Headline */}
-            <p className="text-[16px] sm:text-[22px] md:text-[25px] font-medium text-white/95 tracking-tight mb-8 sm:mb-10 max-w-2xl leading-snug">
+            <p className="text-[16px] sm:text-[22px] md:text-[25px] font-medium text-white/95 tracking-tight mb-3 sm:mb-4 max-w-2xl leading-snug">
               {service.headline}
             </p>
+
+            {/* Tagline / Deskripsi Tambahan agar Hero tidak kosong */}
+            {service.tagline && (
+              <p className="text-[13px] sm:text-[15px] md:text-[17px] font-normal text-white/85 max-w-2xl leading-relaxed mb-7 sm:mb-9 drop-shadow">
+                {service.tagline}
+              </p>
+            )}
 
             {/* Dual Pill Buttons (Sesuai Gambar 1: Putih & Kaca Transparan) */}
             <div className="flex items-center justify-center gap-3 sm:gap-4 flex-wrap">
@@ -85,7 +92,7 @@ export default function ServiceDetailView({ service }) {
                 href={whatsappUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="bg-white hover:bg-gray-100 text-[#111111] font-medium text-[13px] sm:text-[15px] px-7 sm:px-9 py-2.5 sm:py-3 rounded-full transition-all shadow-md"
+                className="bg-white hover:bg-gray-100 text-[#111111] font-medium text-[13px] sm:text-[15px] px-7 sm:px-9 py-2.5 sm:py-3 rounded-full transition-all shadow-md hover:scale-105 active:scale-95"
               >
                 Konsultasi Sekarang
               </a>
@@ -93,12 +100,28 @@ export default function ServiceDetailView({ service }) {
               {/* Tombol Kaca Transparan 'Watch Video' */}
               <a
                 href="#fitur"
-                className="bg-white/25 hover:bg-white/35 backdrop-blur-md text-white font-medium text-[13px] sm:text-[15px] px-6 sm:px-8 py-2.5 sm:py-3 rounded-full transition-all inline-flex items-center gap-2"
+                className="bg-white/25 hover:bg-white/35 backdrop-blur-md text-white font-medium text-[13px] sm:text-[15px] px-6 sm:px-8 py-2.5 sm:py-3 rounded-full transition-all inline-flex items-center gap-2 hover:scale-105 active:scale-95"
               >
                 <span>Lihat Fitur Lengkap</span>
                 <span className="text-[10px]">▶</span>
               </a>
             </div>
+
+            {/* Key Highlights Chips di Dasar Hero Banner */}
+            {service.highlights && service.highlights.length > 0 && (
+              <div className="mt-8 sm:mt-10 flex flex-wrap items-center justify-center gap-2 sm:gap-3 max-w-3xl">
+                {service.highlights.slice(0, 4).map((h, hIdx) => (
+                  <div
+                    key={hIdx}
+                    className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-black/45 backdrop-blur-md border border-white/20 text-white/95 text-[11px] sm:text-[13px] font-medium shadow-sm hover:border-white/50 transition-colors"
+                  >
+                    <span className="text-[#60A5FA] font-bold">{h.stat}</span>
+                    <span className="text-white/40">•</span>
+                    <span>{h.title}</span>
+                  </div>
+                ))}
+              </div>
+            )}
           </div>
         </section>
 
