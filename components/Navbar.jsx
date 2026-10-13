@@ -26,46 +26,116 @@ export default function Navbar({ onSearchClick, onSelectCategory }) {
       name: "Produk Drone",
       id: "products",
       items: [
-        { title: "MECHATRON BMT-1525 H-30", desc: "Heavy Payload 30L Agricultural Drone" },
-        { title: "MECHATRON BMT-1323 H-25", desc: "High-Efficiency 25L Foldable Drone" },
+        {
+          title: "MECHATRON AGRI H-30",
+          desc: "Heavy Payload 30L Agricultural Drone",
+        },
+        {
+          title: "MECHATRON AGRI H-15",
+          desc: "High-Efficiency 15L Foldable Drone",
+        },
       ],
     },
     {
       name: "Sistem & Ekosistem",
       id: "ecosystem",
       items: [
-        { title: "Mechatron Smart GCS Controller", desc: "Ground Control Station Layar Terang & Dual RTK" },
-        { title: "Mechatron Power Combo Kit", desc: "Smart Battery & High-Speed Generator Fast Charger" },
-        { title: "Nozzle & Atomizer System", desc: "Sistem Atomisasi Kabut Presisi Tinggi" },
-        { title: "Suku Cadang & Propeller", desc: "Suku Cadang Orisinil Resmi Mechatron" },
+        {
+          title: "Mechatron AGRI",
+          desc: "Smart Agricultural Drone",
+        },
+        {
+          title: "Mechatron Smart GCS Controller",
+          desc: "Ground Control Station Layar Terang & Dual RTK",
+        },
+        {
+          title: "Mechatron Power Combo Kit",
+          desc: "Smart Battery & High-Speed Generator Fast Charger",
+        },
+        {
+          title: "Suku Cadang & Propeller",
+          desc: "Suku Cadang Orisinil Resmi Mechatron",
+        },
       ],
     },
     {
       name: "Solusi Pertanian",
       id: "solutions",
       items: [
-        { title: "Penyemprotan Pestisida & Herbisida", desc: "Akurasi Tinggi Tanpa Drift Berlebih" },
-        { title: "Penyebaran Pupuk & Benih", desc: "Penyebaran Granul Rata Kapasitas Besar" },
-        { title: "Pemetaan & RTK Sentimeter", desc: "Navigasi Otonom Kontur Medan Otomatis" },
+        {
+          title: "Penyemprotan Pestisida & Herbisida",
+          desc: "Akurasi Tinggi Tanpa Drift Berlebih",
+        },
+        {
+          title: "Penyebaran Pupuk & Benih",
+          desc: "Penyebaran Granul Rata Kapasitas Besar",
+        },
+        {
+          title: "Pemetaan & RTK Sentimeter",
+          desc: "Navigasi Otonom Kontur Medan Otomatis",
+        },
+      ],
+    },
+    {
+      name: "Services & Layanan",
+      id: "services",
+      items: [
+        {
+          title: "Fotografi Drone",
+          desc: "Dokumentasi Udara Kualitas Sinematik",
+        },
+        {
+          title: "Pemetaan LiDAR",
+          desc: "Survei & Point Cloud 3D Presisi Tinggi",
+        },
+        {
+          title: "Perawatan & Servis Drone",
+          desc: "Kalibrasi, Komponen, & Servis Resmi",
+        },
+        {
+          title: "Sewa Drone Profesional",
+          desc: "Rental Armada Drone Sesuai Kebutuhan",
+        },
+        {
+          title: "Pelatihan Pilot Drone",
+          desc: "Akademi Sertifikasi & Lisensi Terbang",
+        },
       ],
     },
     {
       name: "Layanan & Dukungan",
       id: "support",
       items: [
-        { title: "Garansi Resmi Mechatron", desc: "Perlindungan Garansi Unit & Komponen Utama" },
-        { title: "Pusat Servis & Kalibrasi", desc: "Teknisi Tersertifikasi & Suku Cadang Ready" },
-        { title: "Pelatihan Pilot Drone", desc: "Sertifikasi Operasional Lapangan Resmi" },
-        { title: "Panduan & Firmware", desc: "Buku Manual Operasional & Software Update" },
+        {
+          title: "Garansi Resmi Mechatron",
+          desc: "Perlindungan Garansi Unit & Komponen Utama",
+        },
+        {
+          title: "Pusat Servis & Kalibrasi",
+          desc: "Teknisi Tersertifikasi & Suku Cadang Ready",
+        },
+        {
+          title: "Panduan & Firmware",
+          desc: "Buku Manual Operasional & Software Update",
+        },
       ],
     },
     {
       name: "Tentang Mechatron",
       id: "about",
       items: [
-        { title: "Profil Mechatron Indonesia", desc: "Pelopor Teknologi Drone Pertanian Terdepan" },
-        { title: "Kemitraan & Distributor Resmi", desc: "Jaringan Dealer di Seluruh Indonesia" },
-        { title: "Hubungi Tim Sales", desc: "Konsultasi Pembelian & Jadwal Demo Unit" },
+        {
+          title: "Profil Mechatron Indonesia",
+          desc: "Pelopor Teknologi Drone Pertanian Terdepan",
+        },
+        {
+          title: "Kemitraan & Distributor Resmi",
+          desc: "Jaringan Dealer di Seluruh Indonesia",
+        },
+        {
+          title: "Hubungi Tim Sales",
+          desc: "Konsultasi Pembelian & Jadwal Demo Unit",
+        },
       ],
     },
   ];
@@ -108,7 +178,10 @@ export default function Navbar({ onSearchClick, onSelectCategory }) {
         </div>
 
         {/* Center: Desktop Navigation Links */}
-        <nav className="hidden xl:flex items-center space-x-7" aria-label="Main Navigation">
+        <nav
+          className="hidden xl:flex items-center space-x-7"
+          aria-label="Main Navigation"
+        >
           {navLinks.map((link) => (
             <div
               key={link.name}
@@ -122,8 +195,8 @@ export default function Navbar({ onSearchClick, onSelectCategory }) {
                   activeDropdown === link.name
                     ? "text-[#0070D5]"
                     : scrolled
-                    ? "text-[#222222] hover:text-[#0070D5]"
-                    : "text-white/90 hover:text-white"
+                      ? "text-[#222222] hover:text-[#0070D5]"
+                      : "text-white/90 hover:text-white"
                 }`}
               >
                 {link.name}
@@ -183,8 +256,7 @@ export default function Navbar({ onSearchClick, onSelectCategory }) {
 
         {/* Right: Search, Profile, Region, and Blue Pill Buy Button */}
         <div className="flex items-center space-x-4 sm:space-x-5">
-          {/* Search Button */}
-          <button
+          {/* <button
             onClick={onSearchClick}
             className={`transition-colors p-1 ${
               scrolled
@@ -207,10 +279,10 @@ export default function Navbar({ onSearchClick, onSelectCategory }) {
                 d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"
               />
             </svg>
-          </button>
+          </button> */}
 
           {/* User / Profile Icon */}
-          <a
+          {/* <a
             href="#account"
             className={`transition-colors p-1 hidden sm:inline-flex ${
               scrolled
@@ -233,47 +305,10 @@ export default function Navbar({ onSearchClick, onSelectCategory }) {
                 d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z"
               />
             </svg>
-          </a>
-
-          {/* Region Selector: Globe + Indonesia */}
-          <button
-            className={`hidden md:flex items-center gap-1.5 text-[13px] font-normal transition-colors ${
-              scrolled
-                ? "text-[#333333] hover:text-[#000000]"
-                : "text-white/85 hover:text-white"
-            }`}
-            title="Change Region"
-          >
-            <svg
-              className={`w-4 h-4 ${scrolled ? "text-[#555555]" : "text-white/80"}`}
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="1.8"
-                d="M12 21a9 9 0 100-18 9 9 0 000 18z"
-              />
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="1.8"
-                d="M3.6 9h16.8M3.6 15h16.8"
-              />
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="1.8"
-                d="M11.5 3a17 17 0 000 18M12.5 3a17 17 0 010 18"
-              />
-            </svg>
-            <span>Indonesia</span>
-          </button>
+          </a> */}
 
           {/* Buy CTA Pill Button: Blue #0070D5, rounded-full, with Bag/Cart icon */}
-          <a
+          {/* <a
             href="#products"
             className="flex items-center gap-1.5 bg-[#0070D5] hover:bg-[#005fb8] text-white text-[13px] font-medium px-4 py-1.5 rounded-full transition-all duration-200 shadow-sm"
           >
@@ -291,21 +326,38 @@ export default function Navbar({ onSearchClick, onSelectCategory }) {
               />
             </svg>
             <span>Pesan</span>
-          </a>
+          </a> */}
 
           {/* Mobile Menu Button */}
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             className={`xl:hidden p-1.5 transition-colors ${
-              scrolled ? "text-[#111] hover:text-[#0070D5]" : "text-white hover:text-[#0070D5]"
+              scrolled
+                ? "text-[#111] hover:text-[#0070D5]"
+                : "text-white hover:text-[#0070D5]"
             }`}
             aria-label="Toggle Menu"
           >
-            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg
+              className="w-6 h-6"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
               {mobileMenuOpen ? (
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="M6 18L18 6M6 6l12 12"
+                />
               ) : (
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16" />
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="M4 6h16M4 12h16M4 18h16"
+                />
               )}
             </svg>
           </button>

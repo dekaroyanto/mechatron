@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import Navbar from "@/components/Navbar";
 import HeroBanner from "@/components/HeroBanner";
 import FeaturedHeroGrid from "@/components/FeaturedHeroGrid";
+import ServicesSection from "@/components/ServicesSection";
 import ProductShowcase from "@/components/ProductShowcase";
 import FeaturedStories from "@/components/FeaturedStories";
 import ServiceEcosystem from "@/components/ServiceEcosystem";
@@ -43,6 +44,9 @@ export default function Home() {
 
         {/* 3. Featured 2-Column Minimalist Studio Showcase (As in reference image) */}
         <FeaturedHeroGrid onSelectProduct={handleSelectProduct} />
+
+        {/* 4. Layanan & Solusi Bisnis Mechatron (Services Section) */}
+        <ServicesSection />
 
         {/* 4. Product Lineup Catalog & Tabs */}
         {/* <ProductShowcase

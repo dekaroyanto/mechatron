@@ -21,13 +21,13 @@ export default function HeroBanner({ onSelectProduct }) {
 
   const slides = [
     {
-      id: "bmt-1525-h30",
-      tickerLabel: "BMT-1525 H-15",
-      title: "MECHATRON BMT-1525 H-15",
+      id: "agri-h30",
+      tickerLabel: "AGRI H-30",
+      title: "MECHATRON AGRI H-30",
       tagline: "Heavy Payload, Maximum Field Productivity.",
       buttons: [
-        { label: "BMT-1525 H-15", modelId: "bmt-1525-h30" },
-        { label: "BMT-1323 H-25", modelId: "bmt-1323-h25" },
+        { label: "AGRI H-30", modelId: "agri-h30" },
+        { label: "AGRI H-15", modelId: "agri-h15" },
       ],
       image: "/images/heromecha1.jpg",
       // 🎯 Atur krop/posisi horizontal gambar (X%):
@@ -38,7 +38,7 @@ export default function HeroBanner({ onSelectProduct }) {
       // 🔼 Atur posisi tulisan di HP:
       mobileTextTop: "10px",
       productInfo: {
-        title: "MECHATRON BMT-1525 H-15",
+        title: "MECHATRON AGRI H-30",
         tagline: "Smart Agricultural Heavy Payload Drone Kapasitas 30 Liter",
         price: "Hubungi Distributor Resmi Mechatron / Call for Quotation",
         image: "/images/heromecha1.jpg",
@@ -51,13 +51,13 @@ export default function HeroBanner({ onSelectProduct }) {
       },
     },
     {
-      id: "bmt-1323-h25",
-      tickerLabel: "BMT-1323 H-30",
-      title: "MECHATRON BMT-1323 H-30",
+      id: "agri-h15",
+      tickerLabel: "AGRI H-15",
+      title: "MECHATRON AGRI H-15",
       tagline: "Agile, Foldable & High Efficiency.",
       buttons: [
-        { label: "BMT-1323 H-30", modelId: "bmt-1323-h25" },
-        { label: "BMT-1525 H-30", modelId: "bmt-1525-h30" },
+        { label: "AGRI H-15", modelId: "agri-h15" },
+        { label: "AGRI H-30", modelId: "agri-h30" },
       ],
       image: "/images/heromecha2.jpg",
       mobilePosition: "55% center",
@@ -65,13 +65,13 @@ export default function HeroBanner({ onSelectProduct }) {
       mobileOffsetY: "0px",
       mobileTextTop: "50px",
       productInfo: {
-        title: "MECHATRON BMT-1323 H-30",
+        title: "MECHATRON AGRI H-15",
         tagline:
-          "High-Efficiency Compact Agricultural Drone Kapasitas 25 Liter",
+          "High-Efficiency Compact Agricultural Drone Kapasitas 15 Liter",
         price: "Hubungi Distributor Resmi Mechatron / Call for Quotation",
         image: "/images/heromecha2.jpg",
         specs: [
-          "Kapasitas Muatan Tangki 25 Liter",
+          "Kapasitas Muatan Tangki 15 Liter",
           "Desain Lengan Lipat Cepat & Mudah Ditransportasikan",
           "Sensor Kontur Medan Real-Time Otomatis",
           "Efisiensi Semprot Tinggi untuk Berbagai Komoditas",
@@ -79,13 +79,13 @@ export default function HeroBanner({ onSelectProduct }) {
       },
     },
     {
-      id: "bmt-series",
-      tickerLabel: "MECHATRON BMT",
-      title: "MECHATRON BMT SERIES",
-      tagline: "BMT-1525 H-30 & BMT-1323 H-25: Inovasi Pertanian Modern",
+      id: "agri-series",
+      tickerLabel: "MECHATRON AGRI",
+      title: "MECHATRON AGRI SERIES",
+      tagline: "AGRI H-30 & AGRI H-15: Inovasi Pertanian Modern",
       buttons: [
-        { label: "BMT-1525 H-30", modelId: "bmt-1525-h30" },
-        { label: "BMT-1323 H-25", modelId: "bmt-1323-h25" },
+        { label: "AGRI H-30", modelId: "agri-h30" },
+        { label: "AGRI H-15", modelId: "agri-h15" },
       ],
       image: "/images/heromecha3.jpg",
       mobilePosition: "70% center",
@@ -93,7 +93,7 @@ export default function HeroBanner({ onSelectProduct }) {
       mobileOffsetY: "0px",
       mobileTextTop: "10px",
       productInfo: {
-        title: "Mechatron BMT Agricultural Series",
+        title: "Mechatron AGRI Agricultural Series",
         tagline:
           "Solusi Drone Pertanian Presisi Menyeluruh Masa Depan Indonesia",
         price: "Hubungi Distributor Resmi Mechatron / Call for Quotation",

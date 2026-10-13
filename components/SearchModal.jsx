@@ -10,14 +10,14 @@ export default function SearchModal({ isOpen, onClose, onSelectProduct }) {
 
   const allItems = [
     {
-      title: "MECHATRON BMT-1525 H-30",
+      title: "MECHATRON AGRI H-30",
       category: "Drone Pertanian Kapasitas 30L",
       price: "Hubungi Sales Mechatron",
       image: "/images/featured_drone_h30.jpg",
     },
     {
-      title: "MECHATRON BMT-1323 H-25",
-      category: "Drone Pertanian Lipat Kapasitas 25L",
+      title: "MECHATRON AGRI H-15",
+      category: "Drone Pertanian Lipat Kapasitas 15L",
       price: "Hubungi Sales Mechatron",
       image: "/images/featured_drone_h15.jpg",
     },
@@ -28,10 +28,34 @@ export default function SearchModal({ isOpen, onClose, onSelectProduct }) {
       image: "/images/featured_remote_kit.jpg",
     },
     {
-      title: "Mechatron Power & Flight Combo Kit",
-      category: "Baterai Cerdas & Fast Charger",
-      price: "Hubungi Sales Mechatron",
-      image: "/images/featured_combo_kit.jpg",
+      title: "Layanan Fotografi Drone",
+      category: "Jasa Dokumentasi Udara",
+      price: "Konsultasi Penawaran",
+      image: "https://images.unsplash.com/photo-1508614589041-895b88991e3e?auto=format&fit=crop&w=400&q=80",
+    },
+    {
+      title: "Layanan Pemetaan LiDAR",
+      category: "Survei & Pemetaan 3D",
+      price: "Konsultasi Penawaran",
+      image: "https://images.unsplash.com/photo-1506947411487-a56738267384?auto=format&fit=crop&w=400&q=80",
+    },
+    {
+      title: "Layanan Perawatan Drone",
+      category: "Servis & Kalibrasi Resmi",
+      price: "Mulai dari Rp 500.000",
+      image: "https://images.unsplash.com/photo-1581092335397-9583fe92d232?auto=format&fit=crop&w=400&q=80",
+    },
+    {
+      title: "Layanan Sewa Drone Profesional",
+      category: "Rental Armada Drone",
+      price: "Sewa Harian / Bulanan",
+      image: "https://images.unsplash.com/photo-1527977966376-1c8408f9f108?auto=format&fit=crop&w=400&q=80",
+    },
+    {
+      title: "Pelatihan Pilot Drone",
+      category: "Akademi & Sertifikasi Pilot",
+      price: "Paket Pelatihan Resmi",
+      image: "https://images.unsplash.com/photo-1524758631624-e2822e304c36?auto=format&fit=crop&w=400&q=80",
     },
   ];
 
@@ -57,7 +81,7 @@ export default function SearchModal({ isOpen, onClose, onSelectProduct }) {
             type="text"
             value={query}
             onChange={(e) => setQuery(e.target.value)}
-            placeholder="Cari produk Mechatron, misal: BMT-1525, BMT-1323, GCS, Baterai..."
+            placeholder="Cari produk Mechatron, misal: AGRI H-30, AGRI H-15, GCS, Baterai..."
             autoFocus
             className="flex-1 text-[16px] text-[#000000] focus:outline-none bg-transparent"
           />
