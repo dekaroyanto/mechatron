@@ -31,31 +31,43 @@ export default function SearchModal({ isOpen, onClose, onSelectProduct }) {
       title: "Layanan Fotografi Drone",
       category: "Jasa Dokumentasi Udara",
       price: "Konsultasi Penawaran",
-      image: "https://images.unsplash.com/photo-1508614589041-895b88991e3e?auto=format&fit=crop&w=400&q=80",
+      image: "https://images.unsplash.com/photo-1533063319369-0de118afe00a?auto=format&fit=crop&w=400&q=80",
+      link: "/services/fotografi",
     },
     {
       title: "Layanan Pemetaan LiDAR",
       category: "Survei & Pemetaan 3D",
       price: "Konsultasi Penawaran",
       image: "https://images.unsplash.com/photo-1506947411487-a56738267384?auto=format&fit=crop&w=400&q=80",
+      link: "/services/lidar",
     },
     {
-      title: "Layanan Perawatan Drone",
-      category: "Servis & Kalibrasi Resmi",
-      price: "Mulai dari Rp 500.000",
-      image: "https://images.unsplash.com/photo-1581092335397-9583fe92d232?auto=format&fit=crop&w=400&q=80",
+      title: "Layanan Agrikultur & Pertanian",
+      category: "Penyemprotan & Analisis Presisi",
+      price: "Konsultasi Penawaran",
+      image: "https://images.unsplash.com/photo-1527977966376-1c8408f9f108?auto=format&fit=crop&w=400&q=80",
+      link: "/services/agrikultur",
     },
     {
       title: "Layanan Sewa Drone Profesional",
       category: "Rental Armada Drone",
       price: "Sewa Harian / Bulanan",
-      image: "https://images.unsplash.com/photo-1527977966376-1c8408f9f108?auto=format&fit=crop&w=400&q=80",
+      image: "https://images.unsplash.com/photo-1473968512647-3e447244af8f?auto=format&fit=crop&w=400&q=80",
+      link: "/services/sewadrone",
     },
     {
       title: "Pelatihan Pilot Drone",
       category: "Akademi & Sertifikasi Pilot",
       price: "Paket Pelatihan Resmi",
-      image: "https://images.unsplash.com/photo-1524758631624-e2822e304c36?auto=format&fit=crop&w=400&q=80",
+      image: "https://images.unsplash.com/photo-1753781466620-d2bc4d703b2e?auto=format&fit=crop&w=400&q=80",
+      link: "/services/pelatihanpilot",
+    },
+    {
+      title: "Layanan Perawatan Drone",
+      category: "Servis & Kalibrasi Resmi",
+      price: "Mulai dari Rp 500.000",
+      image: "https://images.unsplash.com/photo-1775978150810-7f7410a550a3?auto=format&fit=crop&w=400&q=80",
+      link: "/services/perawatandrone",
     },
   ];
 
@@ -118,7 +130,11 @@ export default function SearchModal({ isOpen, onClose, onSelectProduct }) {
                 <div
                   key={idx}
                   onClick={() => {
-                    if (onSelectProduct) onSelectProduct(item);
+                    if (item.link) {
+                      window.location.href = item.link;
+                    } else if (onSelectProduct) {
+                      onSelectProduct(item);
+                    }
                     onClose();
                   }}
                   className="flex items-center justify-between p-3 hover:bg-[#EDEDED] cursor-pointer transition-colors border border-transparent hover:border-[#D1D1D1]"

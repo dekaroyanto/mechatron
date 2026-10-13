@@ -9,6 +9,7 @@ const openSans = Open_Sans({
 });
 
 export const metadata = {
+  metadataBase: new URL("https://mechatron.id"),
   title: "Mechatron",
   description:
     "Mechatron menghadirkan inovasi drone pertanian, sistem ground control, dan teknologi otonom pintar mutakhir di Indonesia.",

@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
+import Link from "next/link";
 
 export default function Navbar({ onSearchClick, onSelectCategory }) {
   const [scrolled, setScrolled] = useState(false);
@@ -83,22 +84,32 @@ export default function Navbar({ onSearchClick, onSelectCategory }) {
         {
           title: "Fotografi Drone",
           desc: "Dokumentasi Udara Kualitas Sinematik",
+          link: "/services/fotografi",
         },
         {
           title: "Pemetaan LiDAR",
           desc: "Survei & Point Cloud 3D Presisi Tinggi",
+          link: "/services/lidar",
         },
         {
-          title: "Perawatan & Servis Drone",
-          desc: "Kalibrasi, Komponen, & Servis Resmi",
+          title: "Agrikultur & Pertanian",
+          desc: "Penyemprotan Otonom & Analisis Lahan",
+          link: "/services/agrikultur",
         },
         {
           title: "Sewa Drone Profesional",
           desc: "Rental Armada Drone Sesuai Kebutuhan",
+          link: "/services/sewadrone",
         },
         {
           title: "Pelatihan Pilot Drone",
           desc: "Akademi Sertifikasi & Lisensi Terbang",
+          link: "/services/pelatihanpilot",
+        },
+        {
+          title: "Perawatan & Servis Drone",
+          desc: "Kalibrasi, Komponen, & Servis Resmi",
+          link: "/services/perawatandrone",
         },
       ],
     },
@@ -136,6 +147,11 @@ export default function Navbar({ onSearchClick, onSelectCategory }) {
           title: "Hubungi Tim Sales",
           desc: "Konsultasi Pembelian & Jadwal Demo Unit",
         },
+        {
+          title: "Berita & Wawasan Drone",
+          desc: "Kabar Terkini Drone Pertanian & Agrikultur",
+          link: "/blog",
+        },
       ],
     },
   ];
@@ -151,8 +167,8 @@ export default function Navbar({ onSearchClick, onSelectCategory }) {
       <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
         {/* Left: Official Mechatron Brand Logo */}
         <div className="flex items-center">
-          <a
-            href="#"
+          <Link
+            href="/"
             className="flex items-center gap-2.5 group focus:outline-none select-none"
             aria-label="Mechatron Official"
           >
@@ -174,7 +190,7 @@ export default function Navbar({ onSearchClick, onSelectCategory }) {
             >
               MECHATRON
             </span>
-          </a>
+          </Link>
         </div>
 
         {/* Center: Desktop Navigation Links */}
@@ -222,12 +238,12 @@ export default function Navbar({ onSearchClick, onSelectCategory }) {
                   </div>
                   <div className="mt-2 space-y-1">
                     {link.items.map((item, itemIdx) => (
-                      <a
+                      <Link
                         key={itemIdx}
-                        href={`#${link.id}`}
+                        href={item.link || `/#${link.id}`}
                         onClick={() => {
                           setActiveDropdown(null);
-                          if (onSelectCategory) onSelectCategory(link.id);
+                          if (onSelectCategory && !item.link) onSelectCategory(link.id);
                         }}
                         className={`flex flex-col px-3 py-2 rounded transition-colors group text-decoration-none ${
                           scrolled
@@ -245,7 +261,7 @@ export default function Navbar({ onSearchClick, onSelectCategory }) {
                         >
                           {item.desc}
                         </span>
-                      </a>
+                      </Link>
                     ))}
                   </div>
                 </div>
@@ -389,12 +405,12 @@ export default function Navbar({ onSearchClick, onSelectCategory }) {
               </div>
               <div className="space-y-1.5 pl-2">
                 {link.items.map((item, idx) => (
-                  <a
+                  <Link
                     key={idx}
-                    href={`#${link.id}`}
+                    href={item.link || `/#${link.id}`}
                     onClick={() => {
                       setMobileMenuOpen(false);
-                      if (onSelectCategory) onSelectCategory(link.id);
+                      if (onSelectCategory && !item.link) onSelectCategory(link.id);
                     }}
                     className={`block text-[13px] py-1 ${
                       scrolled
@@ -403,7 +419,7 @@ export default function Navbar({ onSearchClick, onSelectCategory }) {
                     }`}
                   >
                     {item.title}
-                  </a>
+                  </Link>
                 ))}
               </div>
             </div>

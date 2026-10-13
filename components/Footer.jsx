@@ -23,6 +23,7 @@ export default function Footer() {
     ],
     "Tentang Mechatron": [
       { name: "Tentang Kami", href: "#" },
+      { name: "Berita Drone & Agrikultur", href: "/blog" },
       { name: "Kemitraan & Distributor Resmi", href: "#" },
       { name: "Jadwalkan Demo Unit Lapangan", href: "#" },
       { name: "Karir & Rekrutmen", href: "#" },
